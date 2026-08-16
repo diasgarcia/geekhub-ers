@@ -6,6 +6,12 @@
 ARG VARIANT="trixie"
 FROM hegerdes/vscode-latex:${VARIANT}
 
+# Brazilian Portuguese support for babel (brazil.ldf, hyphenation)
+# texlive-extra-utils provides latexindent (used by LaTeX Workshop formatter)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends texlive-lang-portuguese texlive-extra-utils \
+    && rm -rf /var/lib/apt/lists/*
+
 ARG USERNAME=latex
 ARG USER_UID=1001
 ARG USER_GID=1000

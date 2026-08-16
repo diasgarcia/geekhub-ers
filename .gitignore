@@ -19,3 +19,6 @@
 
 # Out
 main.pdf
+
+# LaTeX build output (aux files)
+build/

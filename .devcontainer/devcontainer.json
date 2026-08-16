@@ -19,7 +19,63 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"terminal.integrated.shell.linux": "/bin/bash"
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"latex-workshop.formatting.latex": "latexindent.pl",
+				"latex-workshop.latex.auxDir": "%DIR%/build",
+				"latex-workshop.latex.autoClean.run": "onFailed",
+				"latex-workshop.latex.clean.method": "glob",
+				"latex-workshop.latex.clean.subfolder.enabled": true,
+				"latex-workshop.latex.clean.fileTypes": [
+					"*.aux",
+					"*.bbl",
+					"*.blg",
+					"*.fdb_latexmk",
+					"*.fls",
+					"*.log",
+					"*.out",
+					"*.toc",
+					"*.lof",
+					"*.lot",
+					"*.idx",
+					"*.ind",
+					"*.ilg"
+				],
+				"latex-workshop.latex.recipes": [
+					{
+						"name": "latexmk (pdf na raiz, build apagada)",
+						"tools": ["latexmk_auxdir", "copy_synctex", "remove_build"]
+					}
+				],
+				"latex-workshop.latex.tools": [
+					{
+						"name": "latexmk_auxdir",
+						"command": "latexmk",
+						"args": [
+							"-synctex=1",
+							"-interaction=nonstopmode",
+							"-file-line-error",
+							"-pdf",
+							"-auxdir=%AUXDIR%",
+							"%DOC%"
+						],
+						"env": {}
+					},
+					{
+						"name": "copy_synctex",
+						"command": "sh",
+						"args": [
+							"-c",
+							"cp -f \"%AUXDIR%/%DOCFILE%.synctex.gz\" \"%DIR%/%DOCFILE%.synctex.gz\" 2>/dev/null || true"
+						],
+						"env": {}
+					},
+					{
+						"name": "remove_build",
+						"command": "rm",
+						"args": ["-rf", "%AUXDIR%"],
+						"env": {}
+					}
+				]
 			},
 			"extensions": [
 				// Add the IDs of extensions you want installed when the container is created.
