@@ -24,25 +24,25 @@
 				"latex-workshop.latex.auxDir": "%DIR%/build",
 				"latex-workshop.latex.recipes": [
 					{
-						"name": "latexmk (pdf na raiz, build apagada)",
-						"tools": ["latexmk_auxdir", "remove_build"]
+						"name": "latexmk",
+						"tools": ["latexmk", "cleanup"]
 					}
 				],
 				"latex-workshop.latex.tools": [
 					{
-						"name": "latexmk_auxdir",
+						"name": "latexmk",
 						"command": "latexmk",
 						"args": [
-							"-synctex=1",
+							"-pdf",
 							"-interaction=nonstopmode",
 							"-file-line-error",
-							"-pdf",
+							"-synctex=1",
 							"-auxdir=%AUXDIR%",
 							"%DOC%"
 						]
 					},
 					{
-						"name": "remove_build",
+						"name": "cleanup",
 						"command": "rm",
 						"args": ["-rf", "%AUXDIR%"]
 					}
