@@ -1,8 +1,3 @@
-# VsCode
 .vs
-
-# LaTeX
 *.gz
-
-# LaTeX build output (aux files)
 build/
