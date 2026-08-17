@@ -20,7 +20,7 @@
 		"vscode": {
 			"settings": {
 				"terminal.integrated.shell.linux": "/bin/bash",
-				"latex-workshop.formatting.latex": "latexindent.pl",
+				"latex-workshop.formatting.latex": "latexindent",
 				"latex-workshop.latex.auxDir": "%DIR%/build",
 				"latex-workshop.latex.recipes": [
 					{
