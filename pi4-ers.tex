@@ -18,6 +18,7 @@
 \usepackage[brazil]{babel}
 \usepackage{booktabs}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -117,6 +118,7 @@ O documento define:
 	\item perfis de usuário;
 	\item regras de negócio;
 	\item requisitos não funcionais;
+	\item protótipos de interface;
 	\item limites do MVP.
 \end{fieldlist}
 
@@ -542,6 +544,40 @@ Critérios de verificação:
 	\item O sistema não deve concluir uma operação quando um campo obrigatório estiver vazio;
 	\item O sistema não deve aceitar valores que violem as regras definidas para o requisito.
 \end{fieldlist}
+
+\section{Interfaces}
+
+Esta seção apresenta os protótipos de baixa fidelidade (wireframes) das
+principais interfaces do sistema, organizados conforme o fluxo de uso do
+GeekHub.
+
+\begin{figure}[p]
+    \centering
+    \subcaptionbox{Tela de login.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-login.png}}\hfill
+    \subcaptionbox{Tela de cadastro de usuário.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-cadastro.png}}\\[6pt]
+    \subcaptionbox{Tela de edição de perfil.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-editar-perfil.png}}\hfill
+    \subcaptionbox{Tela inicial do catálogo de produtos.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-home-catalogo.png}}
+    \caption{Wireframes das interfaces de autenticação e catálogo.}
+    \label{fig:interfaces-autenticacao}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \subcaptionbox{Tela de detalhes de um produto.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-detalhe-produto.png}}\hfill
+    \subcaptionbox{Perfil público do vendedor.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-perfil-vendedor.png}}\\[6pt]
+    \subcaptionbox{Tela do carrinho de compras.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-carrinho.png}}\hfill
+    \subcaptionbox{Tela de revisão do pedido.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-revisar-pedido.png}}
+    \caption{Wireframes das interfaces de produto, carrinho e pedido.}
+    \label{fig:interfaces-produto}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \subcaptionbox{Tela de detalhes do pedido.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-detalhe-pedido.png}}\hfill
+    \subcaptionbox{Tela de compras realizadas.}{\includegraphics[width=0.45\textwidth]{imagens/interfaces/wireframe-minhas-compras.png}}
+    \caption{Wireframes das interfaces de acompanhamento de pedidos.}
+    \label{fig:interfaces-pedidos}
+\end{figure}
 
 \chapter{Funcionalidades Fora do MVP}
 
