@@ -17,10 +17,17 @@
 
 \usepackage[brazil]{babel}
 \usepackage{booktabs}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
+\usepackage{pdflscape}
+\usepackage{tikz}
 \usepackage{underscore}
 \usepackage[table,xcdraw]{xcolor}
+
+\usetikzlibrary{arrows.meta,backgrounds,fit,positioning,shapes.geometric}
 
 \def\myauthorname{Bryan Alvarenga -- 272426 \\
 	Igor Bassetto Menon -- 274582 \\
@@ -178,6 +185,23 @@ tornam a busca genérica ainda menos eficiente.
 		\bottomrule
 	\end{tabular}
 \end{center}
+
+\section{Diagrama de casos de uso}
+
+A figura a seguir apresenta o diagrama de casos de uso do sistema, com os
+perfis de usuário e as funcionalidades descritas nas próximas seções.
+
+\clearpage
+\begin{landscape}
+	\thispagestyle{plain}
+	\centering
+	\makebox[\linewidth][c]{%
+		\resizebox{0.8\paperheight}{!}{\input{imagens/diagrama-casos-de-uso}}%
+	}
+	\captionof{figure}{Diagrama UML de casos de uso do GeekHub.}
+	\label{fig:casos-de-uso}
+\end{landscape}
+\clearpage
 
 \section{Suposições}
 

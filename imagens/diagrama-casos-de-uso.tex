@@ -1,0 +1,132 @@
+\begin{tikzpicture}[
+	x=1cm,
+	y=1cm,
+	font=\sffamily\footnotesize,
+	usecase/.style={
+		draw=black!80,
+		fill=white,
+		ellipse,
+		minimum width=3.75cm,
+		minimum height=0.9cm,
+		text width=3.15cm,
+		align=center,
+		inner sep=2pt,
+		line width=0.55pt
+	},
+	package/.style={
+		draw=black!55,
+		fill=blue!2,
+		rounded corners=2pt,
+		line width=0.55pt
+	},
+	association/.style={draw=black!70,line width=0.5pt},
+	include/.style={densely dashed,-{Stealth[length=2mm]},draw=black!80,line width=0.55pt},
+	extend/.style={densely dashed,-{Stealth[length=2mm]},draw=black!80,line width=0.55pt},
+	relationlabel/.style={fill=white,inner sep=1.5pt,font=\sffamily\scriptsize}
+]
+
+% Atores UML no corredor central.
+\newcommand{\atoruml}[3]{
+	\begin{scope}[shift={#2}]
+		\coordinate (#1) at (0,0);
+		\coordinate (#1-west) at (-0.45,0);
+		\coordinate (#1-east) at (0.45,0);
+		\coordinate (#1-north) at (0,0.72);
+		\coordinate (#1-south) at (0,-0.72);
+		\draw[line width=0.65pt] (0,0.47) circle (0.2);
+		\draw[line width=0.65pt] (0,0.27) -- (0,-0.25);
+		\draw[line width=0.65pt] (-0.38,0.08) -- (0,0.18) -- (0.38,0.08);
+		\draw[line width=0.65pt] (-0.32,-0.62) -- (0,-0.25) -- (0.32,-0.62);
+		\node[font=\sffamily\footnotesize\bfseries,align=center] at (0,-0.98) {#3};
+	\end{scope}
+}
+
+\atoruml{uc}{(0,2.65)}{Usuário\\comum}
+\atoruml{adm}{(0,-4.8)}{Administrador}
+
+% Cadastro e autenticação
+\node[usecase] (rf01) at (-9.55,6.35) {RF01 -- Cadastrar usuário};
+\node[usecase] (rf02) at (-5.05,6.35) {RF02 -- Realizar login};
+\node[usecase] (rf03) at (-9.55,5.0) {RF03 -- Realizar logout};
+\node[usecase] (rf04) at (-5.05,5.0) {RF04 -- Editar perfil};
+
+% Produtos e anúncios
+\node[usecase] (rf05) at (-9.55,3.15) {RF05 -- Cadastrar anúncio};
+\node[usecase] (rf06) at (-5.05,3.15) {RF06 -- Editar anúncio};
+\node[usecase] (rf07) at (-9.55,1.65) {RF07 -- Remover anúncio};
+\node[usecase] (rf08) at (-5.05,1.65) {RF08 -- Consultar anúncios próprios};
+\node[usecase] (rf09) at (-7.3,0.2) {RF09 -- Visualizar produto};
+
+% Pesquisa
+\node[usecase] (rf10) at (-9.55,-1.65) {RF10 -- Pesquisar produtos};
+\node[usecase] (rf11) at (-5.05,-1.65) {RF11 -- Filtrar produtos};
+
+% Carrinho
+\node[usecase] (rf12) at (5.05,6.35) {RF12 -- Adicionar produto ao carrinho};
+\node[usecase] (rf13) at (9.55,6.35) {RF13 -- Remover produto do carrinho};
+\node[usecase] (rf14) at (5.05,5.0) {RF14 -- Alterar quantidade no carrinho};
+\node[usecase] (rf15) at (9.55,5.0) {RF15 -- Consultar carrinho};
+
+% Pedidos
+\node[usecase] (rf16) at (5.05,3.15) {RF16 -- Criar pedido};
+\node[usecase] (rf18) at (9.55,3.15) {RF18 -- Consultar pedidos recebidos};
+\node[usecase] (rf17) at (5.05,1.65) {RF17 -- Consultar pedidos realizados};
+\node[usecase] (rf19) at (9.55,1.65) {RF19 -- Atualizar estado do pedido};
+
+% Avaliações
+\node[usecase] (rf20) at (5.05,-1.15) {RF20 -- Avaliar compra};
+\node[usecase] (rf21) at (9.55,-1.15) {RF21 -- Consultar avaliações};
+
+% Administração
+\node[usecase] (rf22) at (-9.55,-4.25) {RF22 -- Consultar usuários};
+\node[usecase] (rf23) at (-5.05,-4.25) {RF23 -- Consultar anúncios};
+\node[usecase] (rf24) at (-7.3,-5.85) {RF24 -- Remover anúncio como administrador};
+\node[usecase] (rf25) at (7.3,-3.95) {RF25 -- Gerenciar categorias};
+\node[usecase,minimum width=3.25cm,text width=2.7cm] (cat1) at (3.65,-5.8) {Cadastrar categoria};
+\node[usecase,minimum width=3.25cm,text width=2.7cm] (cat2) at (7.3,-5.8) {Editar categoria};
+\node[usecase,minimum width=3.25cm,text width=2.7cm] (cat3) at (10.95,-5.8) {Desativar categoria};
+
+% Pacotes funcionais do GeekHub. O corredor central mantém os atores fora deles.
+\begin{scope}[on background layer]
+	\node[package,fit={(-12.0,4.35) (-2.6,7.15)},label={[font=\sffamily\small\bfseries]above left:Cadastro e autenticação}] {};
+	\node[package,fit={(-12.0,-0.45) (-2.6,3.95)},label={[font=\sffamily\small\bfseries]above left:Produtos e anúncios}] {};
+	\node[package,fit={(-12.0,-2.4) (-2.6,-0.9)},label={[font=\sffamily\small\bfseries]above left:Pesquisa}] {};
+	\node[package,fit={(2.6,4.35) (12.0,7.15)},label={[font=\sffamily\small\bfseries]above right:Carrinho}] {};
+	\node[package,fit={(2.6,0.9) (12.0,3.95)},label={[font=\sffamily\small\bfseries]above right:Pedidos}] {};
+	\node[package,fit={(2.6,-1.9) (12.0,-0.45)},label={[font=\sffamily\small\bfseries]above right:Avaliações}] {};
+	\node[package,fill=orange!3,fit={(-12.0,-6.65) (-2.6,-3.45)},label={[font=\sffamily\small\bfseries]above left:Administração}] {};
+	\node[package,fill=orange!3,fit={(2.6,-6.65) (12.65,-3.15)},label={[font=\sffamily\small\bfseries]above right:Categorias}] {};
+\end{scope}
+
+% Associações do usuário comum.
+\foreach \casename in {rf01,rf02,rf03,rf04,rf05,rf06,rf07,rf08,rf09,rf10,rf11} {
+	\draw[association] (uc-west) -- (\casename.east);
+}
+\foreach \casename in {rf12,rf13,rf14,rf15,rf16,rf17,rf18,rf19,rf20,rf21} {
+	\draw[association] (uc-east) -- (\casename.west);
+}
+
+% Associações e generalização do administrador.
+\foreach \casename in {rf22,rf23,rf24} {
+	\draw[association] (adm-west) -- (\casename.east);
+}
+\draw[association] (adm-east) -- (rf25.west);
+\draw[-{Triangle[open,length=3mm,width=3mm]},line width=0.7pt]
+	(adm-east) -- (1.45,-4.8) -- node[relationlabel,right] {é um} (1.45,2.65) -- (uc-east);
+
+% Relações extend.
+\draw[extend] (rf11.west) -- node[relationlabel,above] {$\langle\!\langle$extend$\rangle\!\rangle$} (rf10.east);
+\draw[extend] (rf20.north) -- node[relationlabel,right] {$\langle\!\langle$extend$\rangle\!\rangle$} (rf17.south);
+
+% Relações include.
+\draw[include] (rf06.south) -- node[relationlabel,right] {$\langle\!\langle$include$\rangle\!\rangle$} (rf08.north);
+\draw[include] (rf07.east) -- node[relationlabel,above] {$\langle\!\langle$include$\rangle\!\rangle$} (rf08.west);
+\draw[include] (rf16.north) -- node[relationlabel,above,sloped] {$\langle\!\langle$include$\rangle\!\rangle$} (rf15.south);
+\draw[include] (rf24.north) -- node[relationlabel,right] {$\langle\!\langle$include$\rangle\!\rangle$} (rf23.south);
+\draw[include] (rf25.south) -- node[relationlabel,above,sloped] {$\langle\!\langle$include$\rangle\!\rangle$} (cat1.north);
+\draw[include] (rf25.south) -- (cat2.north);
+\draw[include] (rf25.south) -- (cat3.north);
+
+\node[font=\sffamily\large\bfseries] at (0,7.55) {GeekHub -- Diagrama de casos de uso};
+
+\end{tikzpicture}
